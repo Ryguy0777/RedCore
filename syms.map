@@ -290,7 +290,7 @@
     _ZN5Actor14getPlayerDirLRERKN4sead7Vector3IfEE = 0x020005EC;
     _ZN5Actor14getPlayerDirUDERKN4sead7Vector3IfEE = 0x020006B4;
     _ZN5Actor11deleteActorEb = 0x02000774;
-    _ZN5Actor14screenOutCheckEt = 0x020007A0;
+    _ZN5Actor14screenOutCheckENS_13ScreenOutFlagE = 0x020007A0;
     _ZN5Actor21yoganWaveSplashEffectERKN4sead7Vector3IfEE = 0x02000960;
     _ZNK5Actor13getEffectZPosEv = 0x02000970;
     _ZN5ActorC2ERK16ActorCreateParam = 0x02000AC8;
@@ -791,6 +791,10 @@
 // EventMgr
     _ZN8EventMgr9sInstanceE = 0x101D136C;
     _ZN8EventMgr9pushEventEP9EventBase = 0x024A5EA4;
+
+// FragmentMgr
+    _ZN11FragmentMgr9sInstanceE = 0x101D155C;
+    _ZN11FragmentMgr21createBigBlockFragEffERKN4sead7Vector3IfEEi = 0x024B1754;
 
 // FrameCtrl
     _ZN9FrameCtrl11setPlayModeENS_8PlayModeE = 0x024DEED4;
