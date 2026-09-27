@@ -290,7 +290,7 @@
     _ZN5Actor14getPlayerDirLRERKN4sead7Vector3IfEE = 0x020005EC;
     _ZN5Actor14getPlayerDirUDERKN4sead7Vector3IfEE = 0x020006B4;
     _ZN5Actor11deleteActorEb = 0x02000774;
-    _ZN5Actor14screenOutCheckEt = 0x020007A0;
+    _ZN5Actor14screenOutCheckENS_13ScreenOutFlagE = 0x020007A0;
     _ZN5Actor21yoganWaveSplashEffectERKN4sead7Vector3IfEE = 0x02000960;
     _ZNK5Actor13getEffectZPosEv = 0x02000970;
     _ZN5ActorC2ERK16ActorCreateParam = 0x02000AC8;
@@ -427,6 +427,7 @@
 
 // ActorMgr
     _ZN8ActorMgr17createImmediatelyERK16ActorCreateParamNS_12CreateOptionE = 0x02009A58;
+    _ZNK8ActorMgr4findEiPKP9ActorBase = 0x02009B6C;
     _ZN8ActorMgr9sInstanceE = 0x101C30C8;
 
 // ActorMultiState
@@ -447,7 +448,7 @@
     _ZN9AnimModelC1EP5Modeliiiii = 0x024D4798;
     _ZN9AnimModel4initEP13ModelResourcePKN4sead8PtrArrayIS0_EEPNS2_4HeapE = 0x024D49A0;
     _ZN9AnimModel16playAnmFrameCtrlEv = 0x024D4D20;
-    _ZN9AnimModel7calcMdlEv = 0x024D4E84;
+    _ZN9AnimModel4calcEv = 0x024D4E84;
 
 // AreaTask
     _ZN8AreaTask11drawLayer3DERKN3agl3lyr10RenderInfoE = 0x024B84A8;
@@ -476,6 +477,7 @@
 
 // Bg
     _ZN2Bg20getUnitCurrentCdFileEtthPi = 0x02685000;
+    _ZN2Bg9checkGustENS_8GustTypeERKN4sead7Vector3IfEEPf = 0x02685FB0;
     _ZN2Bg14setWaterInWaveERKN4sead7Vector2IfEEh = 0x0268B71C;
     _ZN2Bg9sInstanceE = 0x101DAB94;
 
@@ -554,6 +556,12 @@
     _ZN16ChikuwaBlockBase12StateID_StepE = 0x102216C8;
     _ZN16ChikuwaBlockBase15StateID_FallingE = 0x102216EC;
 
+// CircleLightMask
+    _ZN15CircleLightMaskC1Ev = 0x02815C9C;
+    _ZN15CircleLightMask6createEPN4sead4HeapEN4Mask7TexNameE = 0x02815D20;
+    _ZN15CircleLightMask7executeEv = 0x02815DCC;
+    _ZN15CircleLightMask4drawEv = 0x028160C8;
+
 // CoinOrigin
     _ZN10CoinOrigin9sInstanceE = 0x101DB040;
 
@@ -578,9 +586,19 @@
 // CourseSelectCollisionCheckMgr
     _ZN29CourseSelectCollisionCheckMgr9sInstanceE = 0x101C9758;
 
+// CourseSelectCoursePoint
+    _ZN23CourseSelectCoursePoint8playAnimENS_8AnimTypeEf = 0x021C9E0C;
+
 // CourseSelectMap
     _ZN15CourseSelectMap15getBoneWorldPosEPN4sead7Vector3IfEEiiRKNS0_14SafeStringBaseIcEE = 0x021F59A8;
     _ZN15CourseSelectMap9sInstanceE = 0x101CBD34;
+
+// CourseSelectMgr
+    _ZN15CourseSelectMgr9sInstanceE = 0x101CBE14;
+    _ZN15CourseSelectMgr7getPathEhh = 0x021F9FC8;
+
+// CourseSelectPath
+    _ZNK16CourseSelectPath8getPointEj = 0x021D23AC;
 
 // CourseSelectTask
     _ZN16CourseSelectTask9sInstanceE = 0x101CC96C;
@@ -774,6 +792,10 @@
     _ZN8EventMgr9sInstanceE = 0x101D136C;
     _ZN8EventMgr9pushEventEP9EventBase = 0x024A5EA4;
 
+// FragmentMgr
+    _ZN11FragmentMgr9sInstanceE = 0x101D155C;
+    _ZN11FragmentMgr21createBigBlockFragEffERKN4sead7Vector3IfEEi = 0x024B1754;
+
 // FrameCtrl
     _ZN9FrameCtrl11setPlayModeENS_8PlayModeE = 0x024DEED4;
 
@@ -800,12 +822,17 @@
     _ZN15JointBlendModel4initEP13ModelResourcePKN4sead8PtrArrayIS0_EEPNS2_4HeapE = 0x024DFC78;
     _ZN15JointBlendModel16playAnmFrameCtrlEv = 0x024DFC7C;
     _ZN15JointBlendModel9calcBlendEv = 0x024DFC80;
-    _ZN15JointBlendModel7calcMdlEv = 0x024DFD04;
+    _ZN15JointBlendModel4calcEv = 0x024DFD04;
     _ZN15JointBlendModel6setAnmERKN4sead14SafeStringBaseIcEEfN9FrameCtrl8PlayModeEff = 0x024DFFB4;
 
 // LayerMgr
     _ZN8LayerMgr16calcParallelExecEv = 0x024E0FEC;
     _ZN8LayerMgr9sInstanceE = 0x101D2BE4;
+
+// Light
+    _ZN5LightC1Ev = 0x024E24BC;
+    _ZN5Light6updateE9LightTypePN4sead7Vector3IfEEPjPfS6_PNS1_7Color4fES6_S6_ = 0x024E26BC;
+    _ZN5LightD1Ev = 0x024E2580;
 
 // LoopRideLineBgCollision
     _ZN23LoopRideLineBgCollision7executeEv = 0x021A871C;
@@ -851,6 +878,8 @@
     _ZN17ParentMovementMgr11getTypeMaskE18ParentMovementType = 0x0284A37C;
     _ZN17ParentMovementMgr4linkERKN4sead7Vector3IfEEjh = 0x0284B6F4;
     _ZN17ParentMovementMgr7executeEv = 0x0284B8C4;
+    _ZN17ParentMovementMgr11linkPivotalERKN4sead7Vector3IfEEjaS4_bbbb = 0x0284B824;
+    _ZN17ParentMovementMgr12linkPivotal2ENS_23PivotalRotationSettingsE = 0x0284B7C8;
 
 // PlayerBase
     _ZN10PlayerBase15changeDemoStateERK7StateIDi = 0x028FAF1C;
@@ -930,9 +959,13 @@
     _ZN8RotShake4initERKNS_3ArgE = 0x029E2CE8;
     _ZN8RotShake4moveEv = 0x029E2D34;
 
+// SaveData::LevelStat
+    _ZN8SaveData9LevelStat17getCompletionFlagEhh = 0x024BB028;
+
 // ShaderParamAnimation
     _ZN20ShaderParamAnimation14playTexSrtAnimEPK13ModelResourceRKN4sead14SafeStringBaseIcEE = 0x024FEE50;
     _ZN20ShaderParamAnimation13playColorAnimEPK13ModelResourceRKN4sead14SafeStringBaseIcEE = 0x024FECC8;
+    _ZN20ShaderParamAnimation11unbindModelEv = 0x024FEC54;
 
 // SimpleBoxBgCollision
     _ZN20SimpleBoxBgCollision9sTypeInfoE = 0x101E9FCC;
@@ -953,6 +986,12 @@
     _ZNK10SnakeBlock9toDelete_Ev = 0x0245CE3C;
     _ZTV10SnakeBlock = 0x100A717C;
     _ZN10SnakeBlock14StateID_MovingE = 0x1020742C;
+    _ZN10SnakeBlock12StateID_WaitE = 0x1020740C;
+    _ZN10SnakeBlock16StateID_InactiveE = 0x102074EC;
+    _ZN10SnakeBlock24StateID_FallThroughFirstE = 0x1020746C;
+    _ZN10SnakeBlock23StateID_FallFirstToLastE = 0x1020748C;
+    _ZN10SnakeBlock15StateID_FallAllE = 0x102074AC;
+    _ZN10SnakeBlock23StateID_FallLastToFirstE = 0x102074CC;
 
 // SnakeBlock::DrcTouchCB
     _ZTVN10SnakeBlock10DrcTouchCBE = 0x100A7124;
@@ -963,6 +1002,7 @@
 
 // SnakeBlock::Piece
     _ZN10SnakeBlock5PieceD1Ev = 0x0245E5E0;
+    _ZN10SnakeBlock5Piece12callbackFootEP11BgCollisionP21ActorBgCollisionCheck = 0x024598AC;
     _ZTVN10SnakeBlock5PieceE = 0x100A6F4C;
 
 // SnakeBlockBoyoMgr
