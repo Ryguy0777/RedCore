@@ -23,14 +23,23 @@ jobs:
         with:
           node-version: 24
 
-      - name: Setup Tachyon
+      - name: Download Tachyon
         run: npm i -g --allow-remote=root https://github.com/Zenith-Team/Tachyon/releases/latest/download/tachyon.tgz
+      
+      - name: Setup Tachyon
+        run: TACHYON_HOME=../ttools tachyon setup
+      
+      - name: Install deps
+        run: tachyon install
 
       - name: Update deps
         run: tachyon pm update
 
       - name: Update libs
         run: git submodule update --remote libs/Eft libs/FFL libs/G3d libs/headers libs/imgui_gx2 libs/Lyt libs/sead libs/Snd libs/Sys
+      
+      - name: Update symbols
+        run: cd scripts && npx tsx srcsymrip.ts
 
       - name: Commit changes
         uses: peter-evans/create-pull-request@v6
