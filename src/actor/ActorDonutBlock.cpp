@@ -30,7 +30,7 @@ ActorBase::Result red::ActorDonutBlock::create() {
     mCollider.setSlipAttr(BgUnitCode::cSlipAttr_NoSuberu);
     mCollider.setType(BgCollision::cType_DonutBlock);
     mCollider.set_170(8.0f);
-    mCollider.setCallback(&ChikuwaBlockBase::stepCallback, nullptr, nullptr);
+    mCollider.setCallback(&ChikuwaBlockBase::callbackFoot, nullptr, nullptr);
     
     reviveCollisionCheck();
     
