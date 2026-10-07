@@ -1,11 +1,11 @@
 #pragma once
 
 #include <red/public/ProfileInfo.h>
-#include <telkin/Privilege.h>
 #include <red/registry/builder/ProfileBuilder.h>
 #include <red/public/Profile.h>
 #include <red/profile/ProfileEx.h>
 #include <red/event/StaticInitEvent.h>
+#include <telkin/Privilege.h>
 
 namespace red {
 
@@ -46,11 +46,23 @@ public:
             bool mDrawPriorityModified;
             s16 mExecutePriority;
             bool mExecutePriorityModified;
+            sead::SafeString* mResources;
+            u8 mResourceCount;
+            s8 mResourceType;
+            bool mResourcesModified;
         } sSnapshot = {
-            this->mCreateInfo, this->mCreateInfoModified,
-            this->mFlag, this->mFlagModified,
-            this->mDrawPriority, this->mDrawPriorityModified,
-            this->mExecutePriority, this->mExecutePriorityModified
+            .mCreateInfo = this->mCreateInfo,
+            .mCreateInfoModified = this->mCreateInfoModified,
+            .mFlag = this->mFlag,
+            .mFlagModified = this->mFlagModified,
+            .mDrawPriority = this->mDrawPriority,
+            .mDrawPriorityModified = this->mDrawPriorityModified,
+            .mExecutePriority = this->mExecutePriority,
+            .mExecutePriorityModified = this->mExecutePriorityModified,
+            .mResources = this->mResources,
+            .mResourceCount = this->mResourceCount,
+            .mResourceType = this->mResourceType,
+            .mResourcesModified = this->mResourcesModified
         };
 
         static red::StaticInitEvent::Listener listener([](red::StaticInitEvent&) {
@@ -65,13 +77,17 @@ public:
             }
 
             if (sSnapshot.mDrawPriorityModified) {
-                //s16* priorities = const_cast<s16*>(ProfileInfo::cDrawPriority);
-                //priorities[ID] = mDrawPriority;
-                tk::privilegedWrite(pub::ProfileInfo::cDrawPriority + ID, &sSnapshot.mDrawPriority, sizeof(s16));
+                tk::privilegedWrite(&ProfileInfo::cDrawPriority[ID], &sSnapshot.mDrawPriority, sizeof(ProfileInfo::cDrawPriority[ID]));
             }
 
             if (sSnapshot.mExecutePriorityModified) {
                 ProfileEx::setExecutePriority(ID, sSnapshot.mExecutePriority);
+            }
+            
+            if (sSnapshot.mResourcesModified) {
+                tk::privilegedWrite(&ProfileInfo::cResList[ID], &sSnapshot.mResources, sizeof(ProfileInfo::cResList[ID])); // NOLINT
+                tk::privilegedWrite(&ProfileInfo::cResNum[ID], &sSnapshot.mResourceCount, sizeof(ProfileInfo::cResNum[ID]));
+                tk::privilegedWrite(&ProfileInfo::cResType[ID], &sSnapshot.mResourceType, sizeof(ProfileInfo::cResType[ID]));
             }
         });
 
