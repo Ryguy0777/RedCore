@@ -3,7 +3,7 @@
 using namespace tk::ppc;
 
 // Disable flicker
-tPatch32u(0x022A7974, cmpw(R::r9, R::r9)); // DistantViewMgr::updateCameraAndProjection
+tPatch32u(0x022A7974, cmpw(r9, r9)); // DistantViewMgr::updateCameraAndProjection
 
 #include <telkin/DefineRegisters.h>
 

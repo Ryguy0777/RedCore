@@ -167,7 +167,7 @@ using namespace tk::ppc;
 
 tBranch(0x02004584, red::mapToProfR9, tk::BranchType::bl);
 tBranch(0x020045B0, red::mapToProfR9, tk::BranchType::bl);
-tPatch32u(0x020045B4, mr(R::r6, R::r3));
+tPatch32u(0x020045B4, mr(r6, r3));
 
 tBranch(0x02004948, red::mapToProfR6Ptr, tk::BranchType::bl);
 
@@ -175,21 +175,21 @@ tBranch(0x02004DA8, red::mapToProfR6, tk::BranchType::bl);
 tBranch(0x02005024, red::mapToProfR6, tk::BranchType::bl);
 
 tBranch(0x0200828C, red::mapToProfR8, tk::BranchType::bl);
-tPatch32u(0x02008290, mr(R::r0, R::r3));
+tPatch32u(0x02008290, mr(r0, r3));
 
 tBranch(0x0200869C, red::mapToProfR8, tk::BranchType::bl);
-tPatch32u(0x020086A0, mr(R::r9, R::r3));
+tPatch32u(0x020086A0, mr(r9, r3));
 
 tBranch(0x02007C6C, red_MapToProfR0R3Hook, tk::BranchType::bl);
 
 tBranch(0x02008078, red_MapToProfR0R3Hook, tk::BranchType::bl);
 
 tBranch(0x020080A4, red_MapToProfR0R3Hook, tk::BranchType::bl);
-tPatch32u(0x020080A8, mr(R::r6, R::r3));
+tPatch32u(0x020080A8, mr(r6, r3));
 
 tBranch(0x0200826C, red_MapToProfR0R3Hook, tk::BranchType::bl);
 
 tBranch(0x02008458, red_MapToProfR0R3Hook, tk::BranchType::bl);
 
 tBranch(0x0200A82C, red_MapToProfR0R3Hook, tk::BranchType::bl);
-tPatch32u(0x0200A830, mr(R::r29, R::r3));
+tPatch32u(0x0200A830, mr(r29, r3));

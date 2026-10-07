@@ -17,10 +17,15 @@ void titleVer(TextBox* textBox) {
 
 } // namespace red
 
-#ifdef __STANDALONE__
+#if defined(__STANDALONE__) || __TITLEID__ == TITLEID_USBundle // TODO: EUBundle, NSLU
 tBranch(0x02668138, red::titleVer, tk::BranchType::bl); // Title::create
 tBranch(0x026681A0, red::titleVer, tk::BranchType::bl); // Title::create
 
 tBranch(0x02667FC4, red::titleVer, tk::BranchType::bl); // Title::create
 tBranch(0x0266802C, red::titleVer, tk::BranchType::bl); // Title::create
+#endif
+
+#if __TITLEID__ == TITLEID_USBundle
+tPatchPinNop(0x0267AA3C, TITLEID_USBundle);
+tPatchPinNop(0x0267AA54, TITLEID_USBundle);
 #endif
