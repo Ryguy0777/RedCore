@@ -30,7 +30,7 @@ jobs:
         run: TACHYON_HOME=../ttools tachyon setup
       
       - name: Install deps
-        run: tachyon install
+        run: tachyon pm install
 
       - name: Update deps
         run: tachyon pm update
