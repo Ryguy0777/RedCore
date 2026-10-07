@@ -786,24 +786,20 @@ function visitSingleton(node: AstNode, state: VisitorState, symbols: Map<string,
     return false;
 }
 
-function mangleNamespace(namespace: string | undefined): string | undefined {
-    if (!namespace) {
-        return undefined;
+function mangleScopedName(namespace: string | undefined, className: string): string {
+    const parts: string[] = [];
+    if (namespace) {
+        for (const s of namespace.split("::")) {
+            if (s.length > 0) parts.push(`${s.length}${s}`);
+        }
     }
-
-    const ns: string[] = namespace.split("::");
-
-    let mangled = "";
-    for (const s of ns) {
-        if (!(s.length > 0))
-            continue;
-        
-        mangled += `${s.length}${s}`;
+    for (const s of className.split("::")) {
+        if (s.length > 0) parts.push(`${s.length}${s}`);
     }
-
-    if (mangled.length > 0) {
-        return mangled;
+    if (parts.length > 1) {
+        return `N${parts.join("")}E`;
     }
+    return parts.join("");
 }
 
 function visitVtbl(node: AstNode, state: VisitorState, symbols: Map<string, SymbolData>): boolean {
@@ -811,8 +807,7 @@ function visitVtbl(node: AstNode, state: VisitorState, symbols: Map<string, Symb
         return false;
     }
 
-    const namespaces = mangleNamespace(state.namespace) ?? "";
-    const mangled = `_ZTV${namespaces}${state.className.length}${state.className}`;
+    const mangled = `_ZTV${mangleScopedName(state.namespace, state.className)}`;
     const addr = parseAddressLines(getCommentLines(node), mangled, ["vtable", "vtbl"]);
     if (addr === null) {
         return false;
